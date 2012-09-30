@@ -52,4 +52,15 @@ window.addEventListener('load', function() {
 		ctx.closePath();
 		down = false;
 	}, false);
+	
+	var colors = document.getElementById('colors').childNodes;
+	for (var i = 0, color; color = colors[i]; i++ ) {
+		if ( color.nodeName.toLowerCase() != 'div' ) continue;
+		color.addEventListener('click', function(e) {
+			var style = e.target.getAttribute('style');
+			var color = style.match(/background:(#......)/)[1];
+			ctx.strokeStyle = color;
+		}, false);
+	}
 });
+
